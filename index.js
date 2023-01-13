@@ -1,4 +1,49 @@
 import './style.css';
 
-const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS Starter</h1>`;
+function Employee(name) {
+  this.name = name;
+
+  this.say = function () {
+    console.log('I am employee ' + name);
+  };
+}
+
+function Vendor(name) {
+  this.name = name;
+
+  this.say = function () {
+    console.log('I am vendor ' + name);
+  };
+}
+
+function EmployeeFactory() {
+  this.create = function (name) {
+    return new Employee(name);
+  };
+}
+
+function VendorFactory() {
+  this.create = function (name) {
+    return new Vendor(name);
+  };
+}
+
+function runAcquaintance() {
+  const persons = [];
+
+  const employeeFactory = new EmployeeFactory();
+  const vendorFactory = new VendorFactory();
+
+  persons.push(
+    employeeFactory.create('Masha'),
+    employeeFactory.create('Dasha'),
+    vendorFactory.create('Pasha'),
+    vendorFactory.create('Sasha')
+  );
+
+  persons.forEach((person) => {
+    person.say();
+  });
+}
+
+runAcquaintance();
