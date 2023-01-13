@@ -1,10 +1,14 @@
 import './style.css';
 
+const employeeList = document.querySelector('.employees');
+
 function Employee(name) {
   this.name = name;
 
   this.say = function () {
-    console.log('I am employee ' + name);
+    const employeeElement = document.createElement('li');
+    employeeElement.textContent = `I am employee ${this.name}`;
+    employeeList.append(employeeElement);
   };
 }
 
@@ -12,7 +16,9 @@ function Vendor(name) {
   this.name = name;
 
   this.say = function () {
-    console.log('I am vendor ' + name);
+    const employeeElement = document.createElement('li');
+    employeeElement.textContent = `I am vendor ${this.name}`;
+    employeeList.append(employeeElement);
   };
 }
 
